@@ -10,8 +10,9 @@ public class ListImplementation {
 		ListADT<String> list5 = new List_Tianrun<String>();  // Tianrun's list implementation
 		
 		list0.add("a");
-		list0.get(0);
+		System.out.println(list0.get(0));
 		list0.get(1);
+		
 	}
 
 }
