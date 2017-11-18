@@ -13,6 +13,7 @@ public class ListImplementation {
 		System.out.println(list0.get(0));
 		list0.get(1);
 		
+		
 	}
 
 }
