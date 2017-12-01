@@ -98,8 +98,11 @@ public class Test_ListImplementations {
 
 		test01_test_addMultipleItems(className,list);
 		test02_test_addMoreItems(className,list);
+		//If nothing goes wrong in test01, test02, then add(E item) should be fine.
+		test03_test_InsertAtTop(className,list);
 	}
 
+	
 	/** 
 	 * Test the method add(E item).
 	 * @param list
@@ -128,6 +131,7 @@ public class Test_ListImplementations {
 			System.out.println("Expected: " + length + " items added to list.");
 		}
 	}
+	
 	
 	/** 
 	 * Test the method add(E item).
@@ -160,5 +164,25 @@ public class Test_ListImplementations {
 	}
 
 	
+	/** 
+	 * Test the method add(E item).
+	 * Test if the list will go wrong when expanding.
+	 * @param list
+	 */
+	private static void test03_test_InsertAtTop(String className, ListADT<String> list) {
+		System.out.println("Begin to test on method add(int pos,E item) of List_" + className);
+		try {
+			for(int i = 0; i < 10; i++) {
+				list.add(0, i+"");
+			}
+		} catch(Exception e) {
+			//TODO: be more specific
+			System.out.println("Something went wrong...");
+			e.getCause();
+		} finally {
+			System.out.println("Expected: ");
+		}
+	}
+
 	
 }
