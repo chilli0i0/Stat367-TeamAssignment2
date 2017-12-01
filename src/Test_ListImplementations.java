@@ -95,54 +95,70 @@ public class Test_ListImplementations {
 		}
 
 		// TODO: name and write additional tests to run on each list.
-		test01_test_addOneItem(className,list);
-		test01_test_addMultipleItems(className,list);
 
+		test01_test_addMultipleItems(className,list);
+		test02_test_addMoreItems(className,list);
 	}
 
 	/** 
 	 * Test the method add(E item).
 	 * @param list
 	 */
-	private static void test01_test_addOneItem(String className, ListADT<String> list) {
-		System.out.println("Begin to test on method add(E item) of List_" + className);
-		try {
-			System.out.println("Add one Item");
-			list.add("0");
-		} catch (Exception e) {
-			//TODO: Add evaluation. 
-		} finally {
-			System.out.println("Expected: One item is added into the List_" + className);
-		}
-
-	}
 	private static void test01_test_addMultipleItems(String className, ListADT<String> list) {
 		System.out.println("Begin to test on method add(E item) of List_" + className);
+		
+		int length = 10; //initialize the length of array
 		try {
-			String[] newItems = {
-					"1","2","3","4","5","6","7","8","9","10",
-					"11","12","13","14","15","16","17","18","19","20",
-					"21","22","23","24","25","26","27","28","29","30",
-					"31","32","33","34","35","36","37","38","39","40",
-					"41","42","43","44","45","46","47","48","49","50",
-					"51","52","53","54","55","56","57","58","59","60",
-					"61","62","63","64","65","66","67","68","69","70",
-					"71","72","73","74","75","76","77","78","79","80",
-					"81","82","83","84","85","86","87","88","89","90",
-					"91","92","93","94","95","96","97","98","99","100"
-					};
+			String[] newItems = new String[length];
 			
-			System.out.println("Add 100 items");
+			for(int i = 0; i < length; i++) {
+				newItems[i] = ""+i;
+			}
+			
+			System.out.println("Add {0.." + (length-1) + "} to list.");
 			
 			for(String item: newItems) {
 				list.add(item);
 			}
 		} catch(Exception e) {
-			//TODO
+			//TODO: be more specific
+			System.out.println("Something went wrong...");
+			e.getCause();
 		} finally {
-			System.out.println("Expected: 100 items added to list.");
+			System.out.println("Expected: " + length + " items added to list.");
 		}
+	}
+	
+	/** 
+	 * Test the method add(E item).
+	 * Test if the list will go wrong when expanding.
+	 * @param list
+	 */
+	private static void test02_test_addMoreItems(String className, ListADT<String> list) {
+		System.out.println("Begin to test on method add(E item) of List_" + className);
 		
+		int length = 1000; //initialize the length of array
+		try {
+			String[] newItems = new String[length];
+			
+			for(int i = 0; i < length; i++) {
+				newItems[i] = ""+i;
+			}
+			
+			System.out.println("Add {0.." + (length-1) + "} to list.");
+			
+			for(String item: newItems) {
+				list.add(item);
+			}
+		} catch(Exception e) {
+			//TODO: be more specific
+			System.out.println("Something went wrong...");
+			e.getCause();
+		} finally {
+			System.out.println("Expected: " + length + " items added to list.");
+		}
 	}
 
+	
+	
 }
