@@ -1,3 +1,22 @@
+///////////////////////////////////////////////////////////////////////////// 
+// Semester: CS367 Fall 2017
+// PROJECT: TEAM ASSIGNMENT Test List implementation
+// FILE: Test_Listimplementations.java
+//
+// AUTHOR1: Lixia Yi, lyi28@wisc.edu, lixia, CS367-002
+// AUTHOR2:
+// AUTHOR3:
+// AUTHOR4:
+//
+// ---------------- OTHER ASSISTANCE CREDITS
+// Persons: Identify persons by name, relationship to you, and e-mail
+// Describe in detail the the ideas and help they provided.
+//
+// Online sources: avoid web searches to solve your problems, but if you do
+// search, be sure to include Web URLs and description of
+// of any information you find.
+//////////////////////////// 80 columns wide //////////////////////////////////
+
 import java.lang.reflect.Constructor;
 
 /**
@@ -99,16 +118,28 @@ public class Test_ListImplementations {
 		//construct a new list before each test
 		
 		list = constructListOfString(className);
-		test01_test_addMultipleItems(className,list);
+		test01_add_size_addMultipleItems(className,list);
 		
 		list = constructListOfString(className);
-		test02_test_addMoreItems(className,list);
+		test02_add_get_addMoreItems(className,list);
 		
 		list = constructListOfString(className);
-		test03_test_addOneItem(className,list);
+		test03_add_get_addOneItem(className,list);
 		
 		list = constructListOfString(className);
-		test04_test_InsertAtTop(className,list);
+		test04_add_get_InsertAtTop(className,list);
+		
+		list = constructListOfString(className);
+		test05_add_addNull(className,list);
+		
+		list = constructListOfString(className);
+		test06_add_get_illegalPosition(className,list);
+		
+		list = constructListOfString(className);
+		test07_add_indexOutOfBound(className,list);
+		
+		list = constructListOfString(className);
+		test08_contains_contain(className,list);
 	}
 
 	
@@ -118,11 +149,13 @@ public class Test_ListImplementations {
 	 * Check if the basic method works
 	 * @param list
 	 */
-	private static void test01_test_addMultipleItems(String className, ListADT<String> list) {
+	private static void test01_add_size_addMultipleItems(String className, ListADT<String> list) {
 		
 		System.out.println("====================01");
 		
 		System.out.println("Begin to test on method add(E item) and size() of " + className);
+		System.out.println("Multiple items will be added to the list and "
+				+ "the size() before adding will be checked");
 		
 		int length = 10; //initialize the length of array
 		
@@ -145,7 +178,8 @@ public class Test_ListImplementations {
 			System.out.println("Exception thrown here:");
 			System.out.println(e);
 		} finally {
-			System.out.println("Expected: " + length + " items added to list and the size of list before add is {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}");
+			System.out.println("Expected: " + length + " items added to list and "
+					+ "the size of list before add is {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}");
 		}
 	}
 	
@@ -157,11 +191,15 @@ public class Test_ListImplementations {
 	 * Test if the list will go wrong when expanding.
 	 * @param list
 	 */
-	private static void test02_test_addMoreItems(String className, ListADT<String> list) {
+	private static void test02_add_get_addMoreItems(String className, ListADT<String> list) {
 		
 		System.out.println("====================02");
 		
 		System.out.println("Begin to test on method add(E item) and get(arrayLength-1) of " + className);
+		System.out.println("A large number of items will be added to check if the list "
+				+ "expands correctly (if implemented with array). We'll also check if "
+				+ "get(theLastItem) works correctly");
+		
 		
 		int length = 1000; //initialize the length of array
 		
@@ -187,14 +225,15 @@ public class Test_ListImplementations {
 	
 	/** 
 	 * Test the method add(E item).
-	 * Test if the list will go wrong when expanding.
+	 * Test if add and get work
 	 * @param list
 	 */
-	private static void test03_test_addOneItem(String className, ListADT<String> list) {
+	private static void test03_add_get_addOneItem(String className, ListADT<String> list) {
 		
 		System.out.println("====================03");
 		
 		System.out.println("Begin to test on method add(E item) and get(0) of " + className);
+		System.out.println("Check if add() and get() by adding and getting a single item.");
 		
 		try {
 			System.out.println("Add {0} to list.");
@@ -210,6 +249,22 @@ public class Test_ListImplementations {
 		} finally {
 			System.out.println("Expected: {0} added to list.");
 		}
+		
+		try {
+			System.out.println("Add {0} to index 0.");
+			
+			list.add(0,0+"");
+			
+			System.out.println("The item added in the array is: " + list.get(0));
+			
+		} catch(Exception e) {
+			//TODO: be more specific
+			System.out.println("Exception thrown here:");
+			System.out.println(e);
+		} finally {
+			System.out.println("Expected: {0} added to list.");
+		}
+		
 	}
 	
 	
@@ -219,11 +274,12 @@ public class Test_ListImplementations {
 	 * Test if the list will go wrong when inserting.
 	 * @param list
 	 */
-	private static void test04_test_InsertAtTop(String className, ListADT<String> list) {
+	private static void test04_add_get_InsertAtTop(String className, ListADT<String> list) {
 		
 		System.out.println("====================04");
 		
 		System.out.println("Begin to test on method add(int pos,E item) of " + className);
+		System.out.println("");
 		try {
 			System.out.print("The item at index 0 after inserting {0..9} at the top is: ");
 			for(int i = 0; i < 10; i++) {
@@ -259,9 +315,121 @@ public class Test_ListImplementations {
 		}
 	}
 
+	/** 
+	 * Add a null item.
+	 * @param list
+	 */
+	private static void test05_add_addNull(String className, ListADT<String> list) {
+		
+		System.out.println("====================05");
+		
+		System.out.println("Begin to test on method add(null) and add(0,null) of " + className);
+		System.out.println("");
+		
+		try {
+			list.add(null);
+		} catch(Exception e) {
+			//TODO: be more specific
+			System.out.println("Exception thrown here:");
+			System.out.println(e);
+		} finally {
+			System.out.println("Expected: java.lang.IllegalArgumentException");
+		}
+		
+		try {
+			list.add(0,null);
+		} catch(Exception e) {
+			//TODO: be more specific
+			System.out.println("Exception thrown here:");
+			System.out.println(e);
+		} finally {
+			System.out.println("Expected: java.lang.IllegalArgumentException");
+		}
+	}
 	
 	
+	
+	/** 
+	 * Get illegal position
+	 * @param list
+	 */
+	private static void test06_add_get_illegalPosition(String className, ListADT<String> list) {
+		
+		System.out.println("====================06");
+		
+		System.out.println("Begin to test on method get(-1) of" + className);
+		
+		try {
+			list.add(0+"");
+			System.out.println(list.get(-1));
+		} catch(Exception e) {
+			//TODO: be more specific
+			System.out.println("Exception thrown here:");
+			System.out.println(e);
+		} finally {
+			System.out.println("Expected: java.lang.IndexOutOfBoundsException");
+		}
+	}
+	
+	
+	
+	/** 
+	 * Add index out of bound
+	 * @param list
+	 */
+	private static void test07_add_indexOutOfBound(String className, ListADT<String> list) {
+		
+		System.out.println("====================07");//modify number here
+		
+		System.out.println("Begin to test on method add(1,\"0\") of " + className);
+		
+		try {
+			list.add(1,0+"");
+		} catch(Exception e) {
+			//TODO: be more specific
+			System.out.println("Exception thrown here:");
+			System.out.println(e);
+		} finally {
+			System.out.println("Expected: java.lang.IndexOutOfBoundsException");
+		}
+	}
+	
+	
+	
+	/** 
+	 * Test contains()
+	 * @param list
+	 */
+	private static void test08_contains_contain(String className, ListADT<String> list) {
+		
+		System.out.println("====================08");//modify number here
+		
+		System.out.println("Begin to test on method contains() of " + className);
+		
+		try {
+			for(int i = 0; i < 5; i++) {
+				list.add(i+"");
+			}
+			
+			boolean containAll = true;
+			for(int i = 0; i < 5; i++) {
+				containAll = containAll && list.contains(i+"");
+			}
+			
+			System.out.println("contains() works on all items in list: " + containAll);
+			
+		} catch(Exception e) {
+			//TODO: be more specific
+			System.out.println("Exception thrown here:");
+			System.out.println(e);
+		} finally {
+			System.out.println("Expected: true");
+		}
+	}
 }
+
+
+
 
 
 
@@ -273,9 +441,9 @@ public class Test_ListImplementations {
 // */
 //private static void test00_test_testName(String className, ListADT<String> list) {
 //	
-//	System.out.println("====================00");
+//	System.out.println("====================00");//modify number here
 //	
-//	System.out.println("Begin to test on method ####### of" + className);
+//	System.out.println("Begin to test on method ####### of " + className);
 //	
 //	try {
 //
