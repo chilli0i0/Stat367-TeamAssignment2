@@ -138,7 +138,7 @@ public class Test_ListImplementations {
 				list.add(item);
 			}
 		} catch(Exception e) {
-			
+			//TODO
 		} finally {
 			System.out.println("Expected: 100 items added to list.");
 		}
