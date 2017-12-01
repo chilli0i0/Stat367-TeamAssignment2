@@ -97,7 +97,7 @@ public class Test_ListImplementations {
 		// TODO: name and write additional tests to run on each list.
 
 		test01_test_addMultipleItems(className,list);
-		test02_test_addMoreItems(className,list);
+		//test02_test_addMoreItems(className,list);
 		//If nothing goes wrong in test01, test02, then add(E item) should be fine.
 		test03_test_InsertAtTop(className,list);
 	}
@@ -105,6 +105,7 @@ public class Test_ListImplementations {
 	
 	/** 
 	 * Test the method add(E item).
+	 * Check if the basic method works
 	 * @param list
 	 */
 	private static void test01_test_addMultipleItems(String className, ListADT<String> list) {
@@ -114,21 +115,26 @@ public class Test_ListImplementations {
 		try {
 			String[] newItems = new String[length];
 			
-			for(int i = 0; i < length; i++) {
-				newItems[i] = ""+i;
-			}
-			
 			System.out.println("Add {0.." + (length-1) + "} to list.");
-			
-			for(String item: newItems) {
-				list.add(item);
+			System.out.print("The size of list before add: {");
+			for(int i = 0; i < length; i++) {
+				System.out.print(list.size());
+				
+				if(i != (length -1 )) {
+					System.out.print(", ");
+				}
+				
+				list.add(i+"");
 			}
+			System.out.println("}");
+
 		} catch(Exception e) {
 			//TODO: be more specific
 			System.out.println("Something went wrong...");
-			e.getCause();
+			System.out.println(e.getMessage());
 		} finally {
-			System.out.println("Expected: " + length + " items added to list.");
+			System.out.println("Expected: " + length + " items added to list and the size of list before add: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}");
+			System.out.println("====================");
 		}
 	}
 	
@@ -157,34 +163,54 @@ public class Test_ListImplementations {
 		} catch(Exception e) {
 			//TODO: be more specific
 			System.out.println("Something went wrong...");
-			e.getCause();
+			System.out.println(e.getMessage());
 		} finally {
 			System.out.println("Expected: " + length + " items added to list.");
+			System.out.println("====================");
 		}
 	}
 
 	
 	/** 
-	 * Test the method add(E item).
-	 * Test if the list will go wrong when expanding.
+	 * Test the method add(int pos, E item).
+	 * Test if the list will go wrong when inserting.
 	 * @param list
 	 */
 	private static void test03_test_InsertAtTop(String className, ListADT<String> list) {
 		System.out.println("Begin to test on method add(int pos,E item) of List_" + className);
 		try {
-			System.out.print("The first and last item after each insert is: ");
+			System.out.print("The item at index 0 after inserting {0..9} at the top is: ");
 			for(int i = 0; i < 10; i++) {
 				list.add(0, i+"");
-				System.out.print("{" + list.get(0) + ", " + list.get(i) + "}|");
+				System.out.print("{" + list.get(0) + "}|");
 			}
 			System.out.print("\n");
 			
 		} catch(Exception e) {
 			//TODO: be more specific
 			System.out.println("Something went wrong...");
-			e.getCause();
+			System.out.println(e);//DEBUG
 		} finally {
-			System.out.println("Expected output: {0, 0}|{1, 0}|{2, 0}|{3, 0}|{4, 0}|{5, 0}|{6, 0}|{7, 0}|{8, 0}|{9, 0}|");
+			System.out.println("Expected output: {0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|");
+			System.out.println("====================");
+		}
+		
+		
+		try {
+			System.out.print("The last item after inserting {0..9} at the top is: ");
+			for(int i = 0; i < 10; i++) {
+				list.add(0, i+"");
+				System.out.print("{" + list.get(i) + "}|");
+			}
+			System.out.print("\n");
+			
+		} catch(Exception e) {
+			//TODO: be more specific
+			System.out.println("Something went wrong...");
+			System.out.println(e);//DEBUG
+		} finally {
+			System.out.println("Expected output: {0}|{0}|{0}|{0}|{0}|{0}|{0}|{0}|{0}|{0}|");
+			System.out.println("====================");
 		}
 	}
 
