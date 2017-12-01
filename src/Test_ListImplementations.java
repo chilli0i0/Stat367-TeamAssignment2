@@ -95,10 +95,19 @@ public class Test_ListImplementations {
 		}
 
 		// TODO: name and write additional tests to run on each list.
-
+		
+		//construct a new list before each test
+		
+		list = constructListOfString(className);
 		test01_test_addMultipleItems(className,list);
+		
+		list = constructListOfString(className);
 		test02_test_addMoreItems(className,list);
+		
+		list = constructListOfString(className);
 		test03_test_addOneItem(className,list);
+		
+		list = constructListOfString(className);
 		test04_test_InsertAtTop(className,list);
 	}
 
