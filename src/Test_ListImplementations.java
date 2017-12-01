@@ -172,15 +172,19 @@ public class Test_ListImplementations {
 	private static void test03_test_InsertAtTop(String className, ListADT<String> list) {
 		System.out.println("Begin to test on method add(int pos,E item) of List_" + className);
 		try {
+			System.out.print("The first and last item after each insert is: ");
 			for(int i = 0; i < 10; i++) {
 				list.add(0, i+"");
+				System.out.print("{" + list.get(0) + ", " + list.get(i) + "}|");
 			}
+			System.out.print("\n");
+			
 		} catch(Exception e) {
 			//TODO: be more specific
 			System.out.println("Something went wrong...");
 			e.getCause();
 		} finally {
-			System.out.println("Expected: ");
+			System.out.println("Expected output: {0, 0}|{1, 0}|{2, 0}|{3, 0}|{4, 0}|{5, 0}|{6, 0}|{7, 0}|{8, 0}|{9, 0}|");
 		}
 	}
 
