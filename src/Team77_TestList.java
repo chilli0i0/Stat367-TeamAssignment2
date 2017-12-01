@@ -10,6 +10,17 @@ public class ListImplementation {
 		ListADT<String> list5 = new List_Tianrun<String>();  // Tianrun's list implementation
 		ListADT<String> list6 = new List_Roshan<String>();  // Roshan's list implementation
 
+		
+		//There are eight methods in the ListADT that we need to test on:
+		//void add(E item);
+		//add(int pos, E item);
+		//contains(E item) ;
+		//size() ;
+		//isEmpty() ;
+		//get(int pos) ;
+		//remove(int pos) ;
+		//iterator() ;
+		//They should be tested individually and afterwards combined.
 		list0.add("a");
 		list0.get(0);
 		list0.get(1);
