@@ -123,23 +123,23 @@ public class Test_ListImplementations {
 		list = constructListOfString(className);
 		test02_add_get_addMoreItems(className,list);
 		
-		list = constructListOfString(className);
-		test03_add_get_addOneItem(className,list);
-		
-		list = constructListOfString(className);
-		test04_add_get_InsertAtTop(className,list);
-		
-		list = constructListOfString(className);
-		test05_add_IllegalArgument(className,list);
-		
-		list = constructListOfString(className);
-		test06_add_get_illegalPosition(className,list);
-		
-		list = constructListOfString(className);
-		test07_add_indexOutOfBound(className,list);
-		
-		list = constructListOfString(className);
-		test08_contains_contain(className,list);
+//		list = constructListOfString(className);
+//		test03_add_get_addOneItem(className,list);
+//		
+//		list = constructListOfString(className);
+//		test04_add_get_InsertAtTop(className,list);
+//		
+//		list = constructListOfString(className);
+//		test05_add_IllegalArgument(className,list);
+//		
+//		list = constructListOfString(className);
+//		test06_add_get_illegalPosition(className,list);
+//		
+//		list = constructListOfString(className);
+//		test07_add_indexOutOfBound(className,list);
+//		
+//		list = constructListOfString(className);
+//		test08_contains_contain(className,list);
 	}
 
 	
@@ -158,7 +158,7 @@ public class Test_ListImplementations {
 		int length = 10; //initialize the length of array
 		boolean check = true;
 		
-		System.out.println("what was done to test the list: Add {0.." + (length-1) + "} to list. ");
+		System.out.println("what was done to test the list: Add {0.." + (length-1) + "} to list and check its size after each add. ");
 
 		try {
 			
@@ -207,15 +207,16 @@ public class Test_ListImplementations {
 		
 		System.out.println("====================02");
 		
+		System.out.println("Begin to test on method add(E item), get(arrayLength-1) and get(0) of " + className);
+		
 		int length = 1000; //initialize the length of array
+		for(int i = 0; i < length; i++) {
+			list.add(i+"");
+		}
 		
-		System.out.println("Begin to test on method add(E item) and get(arrayLength-1) of " + className);
 		System.out.println("what was done to test the list: Add {0.." + (length-1) + "} to list and get("+ (length-1) +").");
-		
 		try {
-			for(int i = 0; i < length; i++) {
-				list.add(i+"");
-			}
+
 			
 			if(!list.get(length-1).equals((length-1)+"")) {
 				System.out.println("what the expected results are: The last item in the array is " + (length - 1));
@@ -230,6 +231,22 @@ public class Test_ListImplementations {
 			System.out.println("what the expected results are: The last item in the array is " + (length - 1));
 			System.out.println("what the actual results were: " + e);
 		}
+		
+		System.out.println("\nwhat was done to test the list: Add {0.." + (length-1) + "} to list and get(0).");
+		try {
+			if(!list.get(0).equals(0+"")) {
+				System.out.println("what the expected results are: The first item in the array is 0");
+				System.out.println("what the actual results were: The first item in the array is " + list.get(0));
+			} else {
+				System.out.println("Test completed!");
+			}
+
+		} catch(Exception e) {
+			//TODO: be more specific
+			System.out.println("what the expected results are: The first item in the array is 0");
+			System.out.println("what the actual results were: " + e);
+		}
+		
 	}
 
 	
@@ -479,13 +496,42 @@ public class Test_ListImplementations {
 		
 		System.out.println("Begin to test on method contains() of " + className);
 		
+		
+		System.out.println("what was done to test the list: test if list contains something when list is empty");
+		try {
+			boolean containAll = list.contains("0");
+			
+			if(containAll) {
+				System.out.println("what the expected results are: false");
+				System.out.println("what the actual results were: " + containAll);
+			} else System.out.println("Test completed!");
+			
+		} catch(Exception e) {
+			System.out.println("what the expected results are: false");
+			System.out.println("what the actual results were: " + e);
+		} 
+		
+		System.out.println("\nwhat was done to test the list: test if list contains null when list is empty");
+		try {
+			boolean containAll = list.contains(null);
+			
+			if(containAll) {
+				System.out.println("what the expected results are: false");
+				System.out.println("what the actual results were: " + containAll);
+			} else System.out.println("Test completed!");
+			
+		} catch(Exception e) {
+			System.out.println("what the expected results are: false");
+			System.out.println("what the actual results were: " + e);
+		} 
+		
 		int length = 100;
 		
 		for(int i = 0; i < length; i++) {
 			list.add(i+"");
 		}
 		
-		System.out.println("what was done to test the list: test if list contains all the items added");
+		System.out.println("\nwhat was done to test the list: test if list contains all the items added");
 		try {
 			boolean containAll = true;
 			for(int i = 0; i < length; i++) {
