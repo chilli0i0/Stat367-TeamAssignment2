@@ -557,10 +557,7 @@ public class Test_ListImplementations {
 //
 //	} catch(Exception e) {
 //		//TODO: be more specific
-//		System.out.println("Exception thrown here:");
-//		System.out.println("what the actual results were:")
-//		System.out.println(e);
-//	} finally {
 //		System.out.println("what the expected results are: ");
+//		System.out.println("what the actual results were:" + e)
 //	}
 //}
