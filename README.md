@@ -1,6 +1,6 @@
 # Stat367-TeamAssignment2
 
-Deadline is Dec-03,22pm!
+Deadline is Dec-03,10pm!
 =======
 		ListADT<String> list0 = new List_Deb<String>();  // Deb's list implementation
 		ListADT<String> list1 = new List_Mingi<String>(); // Mingi's list implementation
