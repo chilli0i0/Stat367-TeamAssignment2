@@ -123,23 +123,23 @@ public class Test_ListImplementations {
 		list = constructListOfString(className);
 		test02_add_get_addMoreItems(className,list);
 		
-//		list = constructListOfString(className);
-//		test03_add_get_addOneItem(className,list);
-//		
-//		list = constructListOfString(className);
-//		test04_add_get_InsertAtTop(className,list);
-//		
-//		list = constructListOfString(className);
-//		test05_add_IllegalArgument(className,list);
-//		
-//		list = constructListOfString(className);
-//		test06_add_get_illegalPosition(className,list);
-//		
-//		list = constructListOfString(className);
-//		test07_add_indexOutOfBound(className,list);
-//		
-//		list = constructListOfString(className);
-//		test08_contains_contain(className,list);
+		list = constructListOfString(className);
+		test03_add_get_addOneItem(className,list);
+		
+		list = constructListOfString(className);
+		test04_add_get_InsertAtTop(className,list);
+		
+		list = constructListOfString(className);
+		test05_add_IllegalArgument(className,list);
+		
+		list = constructListOfString(className);
+		test06_add_get_illegalPosition(className,list);
+		
+		list = constructListOfString(className);
+		test07_add_indexOutOfBound(className,list);
+		
+		list = constructListOfString(className);
+		test08_contains_contain(className,list);
 	}
 
 	
