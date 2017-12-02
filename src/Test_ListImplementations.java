@@ -130,7 +130,7 @@ public class Test_ListImplementations {
 		test04_add_get_InsertAtTop(className,list);
 		
 		list = constructListOfString(className);
-		test05_add_addNull(className,list);
+		test05_add_IllegalArgument(className,list);
 		
 		list = constructListOfString(className);
 		test06_add_get_illegalPosition(className,list);
@@ -156,31 +156,45 @@ public class Test_ListImplementations {
 		System.out.println("Begin to test on method add(E item) and size() of " + className);
 		
 		int length = 10; //initialize the length of array
+		boolean check = true;
 		
 		System.out.println("what was done to test the list: Add {0.." + (length-1) + "} to list. ");
-		System.out.println("what the expected results are: " + length + " items added to list and "
-				+ "the size of list before add is {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}");
-		
+
 		try {
-			System.out.print("The size of list before add: {");
+			
+			String[] newList = new String[length];
+			
 			for(int i = 0; i < length; i++) {
-				System.out.print(list.size());
+				if(list.size() != i) check = check&&false;
 				
-				if(i != (length -1 )) {
-					System.out.print(", ");
-				}
+				newList[i] = list.size()+""; //store results in an array to print them afterwards
 				
 				list.add(i+"");
 			}
-			System.out.println("}");
-
+			
+			if(!check) {
+				System.out.println("what the expected results are: " + length + " items added to list and "
+						+ "the size of list before each add is {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}");
+				
+				System.out.print("what the actual results were: The sizes of list before each add are {");
+				for(int i = 0; i < length; i++) {
+					
+					System.out.print(newList[i]);
+					
+					if(i != (length -1)) {
+						System.out.print(", ");
+					}
+					
+					list.add(i+"");
+				}
+				System.out.println("}");
+			} else {
+				System.out.println("Test completed!");
+			}
 		} catch(Exception e) {
-			//TODO: be more specific
-			System.out.println("Exception thrown here:");
 			System.out.println(e);
 		} 
 	}
-	
 	
 	
 	
@@ -193,29 +207,28 @@ public class Test_ListImplementations {
 		
 		System.out.println("====================02");
 		
-		System.out.println("Begin to test on method add(E item) and get(arrayLength-1) of " + className);
-		System.out.println("A large number of items will be added to check if the list "
-				+ "expands correctly (if implemented with array). We'll also check if "
-				+ "get(theLastItem) works correctly");
-		
-		
 		int length = 1000; //initialize the length of array
 		
+		System.out.println("Begin to test on method add(E item) and get(arrayLength-1) of " + className);
+		System.out.println("what was done to test the list: Add {0.." + (length-1) + "} to list and get("+ (length-1) +").");
+		
 		try {
-			System.out.println("Add {0.." + (length-1) + "} to list.");
 			for(int i = 0; i < length; i++) {
 				list.add(i+"");
 			}
 			
-			System.out.println("The last item in the array is: " + list.get(length-1));
+			if(!list.get(length-1).equals((length-1)+"")) {
+				System.out.println("what the expected results are: The last item in the array is " + (length - 1));
+				System.out.println("what the actual results were: The last item in the array is " + list.get(length-1));
+			} else {
+				System.out.println("Test completed!");
+			}
 
 			
 		} catch(Exception e) {
 			//TODO: be more specific
-			System.out.println("Exception thrown here:");
-			System.out.println(e);
-		} finally {
-			System.out.println("Expected: " + length + " items added to list and the last item in the array is: 999");
+			System.out.println("what the expected results are: The last item in the array is " + (length - 1));
+			System.out.println("what the actual results were: " + e);
 		}
 	}
 
@@ -230,39 +243,39 @@ public class Test_ListImplementations {
 		
 		System.out.println("====================03");
 		
-		System.out.println("Begin to test on method add(E item) and get(0) of " + className);
-		System.out.println("Check if add() and get() by adding and getting a single item.");
+		System.out.println("Begin to test on method add() and get() of " + className);
 		
-		try {
-			System.out.println("Add {0} to list.");
-			
+		System.out.println("what was done to test the list: add(\"0\") and get(0).");
+		
+		try {			
 			list.add(0+"");
 			
-			System.out.println("The item added in the array is: " + list.get(0));
+			if(!list.get(0).equals("0")) {
+				System.out.println("what the expected results are: {0}");
+				System.out.println("what the actual results were: {" + list.get(0) + "}");
+			} else System.out.println("Test completed!");
 			
 		} catch(Exception e) {
 			//TODO: be more specific
-			System.out.println("Exception thrown here:");
-			System.out.println(e);
-		} finally {
-			System.out.println("Expected: {0} added to list.");
+			System.out.println("what the expected results are: {0}");
+			System.out.println("what the actual results were: " + e);
 		}
 		
-		try {
-			System.out.println("Add {0} to index 0.");
-			
+		System.out.println("\nwhat was done to test the list: add(0,\"0\") and get(0).");
+		
+		try {			
 			list.add(0,0+"");
 			
-			System.out.println("The item added in the array is: " + list.get(0));
+			if(!list.get(0).equals("0")) {
+				System.out.println("what the expected results are: {0}");
+				System.out.println("what the actual results were: {" + list.get(0) + "}");
+			} else System.out.println("Test completed!");
 			
 		} catch(Exception e) {
 			//TODO: be more specific
-			System.out.println("Exception thrown here:");
-			System.out.println(e);
-		} finally {
-			System.out.println("Expected: {0} added to list.");
+			System.out.println("what the expected results are: {0}");
+			System.out.println("what the actual results were: " + e);
 		}
-		
 	}
 	
 	
@@ -277,39 +290,71 @@ public class Test_ListImplementations {
 		System.out.println("====================04");
 		
 		System.out.println("Begin to test on method add(int pos,E item) of " + className);
-		System.out.println("");
+		System.out.println("what was done to test the list: insert {0..9} to index 0 and get(0)");
+		
 		try {
-			System.out.print("The item at index 0 after inserting {0..9} at the top is: ");
+			boolean check = true;
+			String[] newList = new String[10];
+			
 			for(int i = 0; i < 10; i++) {
 				list.add(0, i+"");
-				System.out.print("{" + list.get(0) + "}|");
+				if(!list.get(0).equals(i+"")) check = check&&false;
+				
+				newList[i] = list.get(0);
 			}
-			System.out.print("\n");
+			
+			if(!check) {
+				System.out.println("what the expected results are: {0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}");
+				System.out.print("what the actual results were: ");
+				for(int i = 0; i < 10; i++) {
+					System.out.print("{" + newList[i] + "}");
+					
+					if(i != 10) {
+						System.out.print("|");
+					}
+					
+				} 
+				System.out.print("\n");
+			} else System.out.println("Test completed!"); 
+
 			
 		} catch(Exception e) {
-			//TODO: be more specific
-			System.out.println("Exception thrown here:");
-			System.out.println(e);//DEBUG
-		} finally {
-			System.out.println("Expected output: {0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|");
-			System.out.println("====================");
+			System.out.println("what the expected results are: {0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}");
+			System.out.println("what the actual results were: " + e);
 		}
 		
 		
+		System.out.println("\nwhat was done to test the list: insert {0..9} to index 0 and get(lastItem)");
+		
 		try {
-			System.out.print("The last item after inserting {0..9} at the top is: ");
+			boolean check = true;
+			String[] newList = new String[10];
+			
 			for(int i = 0; i < 10; i++) {
 				list.add(0, i+"");
-				System.out.print("{" + list.get(i) + "}|");
+				if(!list.get(i).equals(0+"")) check = check&&false;
+				
+				newList[i] = list.get(i);
 			}
-			System.out.print("\n");
+			
+			if(!check) {
+				System.out.println("what the expected results are: {0}|{0}|{0}|{0}|{0}|{0}|{0}|{0}|{0}|{0}");
+				System.out.print("what the actual results were: ");
+				for(int i = 0; i < 10; i++) {
+					System.out.print("{" + newList[i] + "}");
+					
+					if(i != 10) {
+						System.out.print("|");
+					}
+					
+				}
+				System.out.print("\n");
+			} else System.out.println("Test completed!");
+
 			
 		} catch(Exception e) {
-			//TODO: be more specific
-			System.out.println("Exception thrown here:");
-			System.out.println(e);//DEBUG
-		} finally {
-			System.out.println("Expected output: {0}|{0}|{0}|{0}|{0}|{0}|{0}|{0}|{0}|{0}|");
+			System.out.println("what the expected results are: {0}|{0}|{0}|{0}|{0}|{0}|{0}|{0}|{0}|{0}");
+			System.out.println("what the actual results were: " + e);
 		}
 	}
 
@@ -317,79 +362,109 @@ public class Test_ListImplementations {
 	 * Add a null item.
 	 * @param list
 	 */
-	private static void test05_add_addNull(String className, ListADT<String> list) {
+	private static void test05_add_IllegalArgument(String className, ListADT<String> list) {
 		
 		System.out.println("====================05");
 		
-		System.out.println("Begin to test on method add(null) and add(0,null) of " + className);
-		System.out.println("");
+		System.out.println("Begin to test on IllegalArguments of method add() of " + className);
 		
+		System.out.println("what was done to test the list: add(null)");
 		try {
 			list.add(null);
+			System.out.println("what the expected results are: java.lang.IllegalArgumentException");
+			System.out.println("what the actual results were: null was added to list");
+		} catch(IllegalArgumentException e) {
+			System.out.println("Test completed!");
 		} catch(Exception e) {
 			//TODO: be more specific
-			System.out.println("Exception thrown here:");
-			System.out.println(e);
-		} finally {
-			System.out.println("Expected: java.lang.IllegalArgumentException");
-		}
+			System.out.println("what the expected results are: java.lang.IllegalArgumentException");
+			System.out.println("what the actual results were: " + e);
+		} 
 		
+		System.out.println("\nwhat was done to test the list: add(0,null)");
 		try {
 			list.add(0,null);
+			System.out.println("what the expected results are: java.lang.IllegalArgumentException");
+			System.out.println("what the actual results were: null was added to list");
+		} catch(IllegalArgumentException e) {
+			System.out.println("Test completed!");
 		} catch(Exception e) {
 			//TODO: be more specific
-			System.out.println("Exception thrown here:");
-			System.out.println(e);
-		} finally {
-			System.out.println("Expected: java.lang.IllegalArgumentException");
-		}
+			System.out.println("what the expected results are: java.lang.IllegalArgumentException");
+			System.out.println("what the actual results were: " + e);
+		} 
 	}
 	
 	
 	
 	/** 
-	 * Get illegal position
+	 * Get item from illegal position
 	 * @param list
 	 */
 	private static void test06_add_get_illegalPosition(String className, ListADT<String> list) {
 		
 		System.out.println("====================06");
 		
-		System.out.println("Begin to test on method get(-1) of" + className);
+		System.out.println("Begin to test on illegal position of method get() of " + className);
 		
+		list.add(0+"");
+		
+		System.out.println("what was done to test the list: get(-1) on a list with one item");
 		try {
-			list.add(0+"");
 			System.out.println(list.get(-1));
+		} catch(IndexOutOfBoundsException e) {
+			System.out.println("Test completed!");
 		} catch(Exception e) {
-			//TODO: be more specific
-			System.out.println("Exception thrown here:");
-			System.out.println(e);
-		} finally {
-			System.out.println("Expected: java.lang.IndexOutOfBoundsException");
+			System.out.println("what the expected results are: java.lang.IndexOutOfBoundsException");
+			System.out.println("what the actual results were: " + e);
+		}
+		
+		System.out.println("\nwhat was done to test the list: get(1) on a list with one item");
+		try {
+			System.out.println(list.get(1));
+		} catch(IndexOutOfBoundsException e) {
+			System.out.println("Test completed!");
+		} catch(Exception e) {
+			System.out.println("what the expected results are: java.lang.IndexOutOfBoundsException");
+			System.out.println("what the actual results were: " + e);
 		}
 	}
 	
 	
 	
 	/** 
-	 * Add index out of bound
+	 * Add to an index out of bound
 	 * @param list
 	 */
 	private static void test07_add_indexOutOfBound(String className, ListADT<String> list) {
 		
 		System.out.println("====================07");//modify number here
 		
-		System.out.println("Begin to test on method add(1,\"0\") of " + className);
+		System.out.println("Begin to test on IndexOutOfBounds of method add() of " + className);
 		
+		System.out.println("what was done to test the list: add(1,\"0\") to an empty list");
 		try {
 			list.add(1,0+"");
+			System.out.println("what the expected results are: java.lang.IndexOutOfBoundsException");
+			System.out.println("what the actual results were: item was added into an illegal index");
+		} catch(IndexOutOfBoundsException e) {
+			System.out.println("Test completed!");
 		} catch(Exception e) {
-			//TODO: be more specific
-			System.out.println("Exception thrown here:");
-			System.out.println(e);
-		} finally {
-			System.out.println("Expected: java.lang.IndexOutOfBoundsException");
-		}
+			System.out.println("what the expected results are: java.lang.IndexOutOfBoundsException");
+			System.out.println("what the actual results were: " + e);
+		} 
+		
+		System.out.println("\nwhat was done to test the list: add(-1,\"0\") to an empty list");
+		try {
+			list.add(-1,0+"");
+			System.out.println("what the expected results are: java.lang.IndexOutOfBoundsException");
+			System.out.println("what the actual results were: item was added into an illegal index");
+		} catch(IndexOutOfBoundsException e) {
+			System.out.println("Test completed!");
+		} catch(Exception e) {
+			System.out.println("what the expected results are: java.lang.IndexOutOfBoundsException");
+			System.out.println("what the actual results were: " + e);
+		} 
 	}
 	
 	
@@ -404,26 +479,59 @@ public class Test_ListImplementations {
 		
 		System.out.println("Begin to test on method contains() of " + className);
 		
+		int length = 100;
+		
+		for(int i = 0; i < length; i++) {
+			list.add(i+"");
+		}
+		
+		System.out.println("what was done to test the list: test if list contains all the items added");
 		try {
-			for(int i = 0; i < 5; i++) {
-				list.add(i+"");
-			}
-			
 			boolean containAll = true;
-			for(int i = 0; i < 5; i++) {
+			for(int i = 0; i < length; i++) {
 				containAll = containAll && list.contains(i+"");
 			}
 			
-			System.out.println("contains() works on all items in list: " + containAll);
+			if(!containAll) {
+				System.out.println("what the expected results are: true");
+				System.out.println("what the actual results were: " + containAll);
+			} else System.out.println("Test completed!");
 			
 		} catch(Exception e) {
-			//TODO: be more specific
-			System.out.println("Exception thrown here:");
-			System.out.println(e);
-		} finally {
-			System.out.println("Expected: true");
-		}
+			System.out.println("what the expected results are: true");
+			System.out.println("what the actual results were: " + e);
+		} 
+		
+		System.out.println("\nwhat was done to test the list: test if list contains items that were not added");
+		try {
+			boolean containAll = list.contains("TeamAssignment");
+			
+			if(containAll) {
+				System.out.println("what the expected results are: false");
+				System.out.println("what the actual results were: " + containAll);
+			} else System.out.println("Test completed!");
+			
+		} catch(Exception e) {
+			System.out.println("what the expected results are: false");
+			System.out.println("what the actual results were: " + e);
+		} 
+		
+		System.out.println("\nwhat was done to test the list: test if list contains null");
+		try {
+			boolean containAll = list.contains(null);
+			
+			if(containAll) {
+				System.out.println("what the expected results are: false");
+				System.out.println("what the actual results were: " + containAll);
+			} else System.out.println("Test completed!");
+			
+		} catch(Exception e) {
+			System.out.println("what the expected results are: false");
+			System.out.println("what the actual results were: " + e);
+		} 
 	}
+	
+	
 }
 
 
