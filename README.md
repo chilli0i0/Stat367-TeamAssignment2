@@ -1,8 +1,8 @@
 # Stat367-TeamAssignment2
 
-<<<<<<< HEAD
+Deadline is Dec-03,10pm!
 =======
-		ListADT<String> list0 = new List_Deb<String>();  // Den's list implementation
+		ListADT<String> list0 = new List_Deb<String>();  // Deb's list implementation
 		ListADT<String> list1 = new List_Mingi<String>(); // Mingi's list implementation
 		ListADT<String> list2 = new List_Yash<String>();  // Yash's list implementation
 		ListADT<String> list3 = new List_Sapan<String>();  // Sapan's list implementation
@@ -21,4 +21,8 @@
 		//remove(int pos) ;
 		//iterator() ;
 		//They should be tested individually and afterwards combined.
->>>>>>> branch 'master' of https://github.com/chilli0i0/Stat367-TeamAssignment2.git
+		
+=======		
+		//Update 12/1 18:39
+		Actually, the methods need to be tested together or we wouldn't know if there is anything wrong...
+		
