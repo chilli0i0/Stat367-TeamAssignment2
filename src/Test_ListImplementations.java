@@ -154,13 +154,14 @@ public class Test_ListImplementations {
 		System.out.println("====================01");
 		
 		System.out.println("Begin to test on method add(E item) and size() of " + className);
-		System.out.println("Multiple items will be added to the list and "
-				+ "the size() before adding will be checked");
 		
 		int length = 10; //initialize the length of array
 		
+		System.out.println("what was done to test the list: Add {0.." + (length-1) + "} to list. ");
+		System.out.println("what the expected results are: " + length + " items added to list and "
+				+ "the size of list before add is {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}");
+		
 		try {
-			System.out.println("Add {0.." + (length-1) + "} to list.");
 			System.out.print("The size of list before add: {");
 			for(int i = 0; i < length; i++) {
 				System.out.print(list.size());
@@ -177,10 +178,7 @@ public class Test_ListImplementations {
 			//TODO: be more specific
 			System.out.println("Exception thrown here:");
 			System.out.println(e);
-		} finally {
-			System.out.println("Expected: " + length + " items added to list and "
-					+ "the size of list before add is {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}");
-		}
+		} 
 	}
 	
 	
@@ -446,14 +444,15 @@ public class Test_ListImplementations {
 //	System.out.println("====================00");//modify number here
 //	
 //	System.out.println("Begin to test on method ####### of " + className);
-//	
+//	System.out.println("what was done to test the list:")
 //	try {
 //
 //	} catch(Exception e) {
 //		//TODO: be more specific
 //		System.out.println("Exception thrown here:");
+//		System.out.println("what the actual results were:")
 //		System.out.println(e);
 //	} finally {
-//		System.out.println("Expected: ");
+//		System.out.println("what the expected results are: ");
 //	}
 //}
