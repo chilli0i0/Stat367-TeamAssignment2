@@ -5,7 +5,7 @@
 //
 // AUTHOR1: Lixia Yi, lyi28@wisc.edu, lixia, CS367-002
 // AUTHOR2:
-// AUTHOR3:
+// AUTHOR3: Lyndon Janowiak, ljanowiak@wisc.edu
 // AUTHOR4:
 //
 // ---------------- OTHER ASSISTANCE CREDITS
@@ -140,6 +140,15 @@ public class Test_ListImplementations {
 		
 		list = constructListOfString(className);
 		test08_contains_contain(className,list);
+		
+		list = constructListOfString(className);
+		test09_remove_removeFromEmpty(className,list);
+		
+		list = constructListOfString(className);
+		test10_remove_addAndRemoveOne(className,list);
+		
+		list = constructListOfString(className);
+		test11_remove_addAndRemoveAll(className,list);
 	}
 
 	
@@ -577,6 +586,131 @@ public class Test_ListImplementations {
 		} 
 	}
 	
+
+	/**
+	 * Test remove() by removing from an empty list
+	 * @param list
+	 */
+	private static void test09_remove_removeFromEmpty(String className, ListADT<String> list) {
+
+		System.out.println("====================09");//modify number here
+
+		System.out.println("Begin to test on method remove() of " + className + " for an empty list");
+
+		System.out.println("what was done to test the list: test if remove(0) returns correct error for empty list");
+		
+		try {
+			list.remove(0);
+			System.out.println("what the expected results are: java.lang.IndexOutOfBoundsException");
+			System.out.println("what the actual results were: ");
+		} catch(IndexOutOfBoundsException e) {
+			System.out.println("Test completed!");
+
+		} catch(Exception e) {
+			//TODO: be more specific
+			System.out.println("what the expected results are: java.lang.IndexOutOfBoundsException");
+			System.out.println("what the actual results were: " + e);
+		}
+		
+		System.out.println("what was done to test the list: test if remove(-1) returns correct error for empty list");
+		
+		try {
+			list.remove(-1);
+			System.out.println("what the expected results are: java.lang.IndexOutOfBoundsException");
+			System.out.println("what the actual results were: ");
+		} catch(IndexOutOfBoundsException e) {
+			System.out.println("Test completed!");
+
+		} catch(Exception e) {
+			//TODO: be more specific
+			System.out.println("what the expected results are: java.lang.IndexOutOfBoundsException");
+			System.out.println("what the actual results were: " + e);
+		}
+		
+		System.out.println("what was done to test the list: test if remove(1) returns correct error for empty list");
+		
+		try {
+			list.remove(1);
+			System.out.println("what the expected results are: java.lang.IndexOutOfBoundsException");
+			System.out.println("what the actual results were: ");
+		} catch(IndexOutOfBoundsException e) {
+			System.out.println("Test completed!");
+
+		} catch(Exception e) {
+			//TODO: be more specific
+			System.out.println("what the expected results are: java.lang.IndexOutOfBoundsException");
+			System.out.println("what the actual results were: " + e);
+		}
+	}
+	
+	/** 
+	 * Test adding several items, removing one, and checking if the one is removed
+	 * @param list
+	 */
+	private static void test10_remove_addAndRemoveOne(String className, ListADT<String> list) {
+		
+		System.out.println("====================10");//modify number here
+		
+		System.out.println("Begin to test on method remove() of " + className);
+		System.out.println("what was done to test the list: added several items and removed one, test if list still contains it");
+		try {
+			int length = 100;
+			
+			for (int i = 0; i < length; i++) {
+				list.add(i+"");
+			}
+			
+			String oldValue = list.get(0);
+			list.remove(0);
+			
+			if (list.contains(oldValue)) {
+				System.out.println("what the expected results are: false");
+				System.out.println("what the actual results were: true");
+			} else {
+				System.out.println("Test completed!");
+			}
+			
+		} catch(Exception e) {
+			//TODO: be more specific
+			System.out.println("what the expected results are: ");
+			System.out.println("what the actual results were:" + e);
+		}
+	}
+
+	/** 
+	 * Test adding several items and removing all of them
+	 * @param list
+	 */
+	private static void test11_remove_addAndRemoveAll(String className, ListADT<String> list) {
+		
+		System.out.println("====================11");//modify number here
+		
+		System.out.println("Begin to test on method remove() of " + className);
+		System.out.println("what was done to test the list: added and removed several items, test if list is empty");
+		try {
+			int length = 100;
+			
+			for (int i = 0; i < length; i++) {
+				list.add(i+"");
+			}
+			
+			while (!list.isEmpty()) {
+				list.remove(0);
+			}
+			
+			if (list.size() == 0) {
+				System.out.println("Test completed!");
+			} else {
+				System.out.println("what the expected results are: 0");
+				System.out.println("what the actual results were: " + list.size());
+			}
+			
+		} catch(Exception e) {
+			//TODO: be more specific
+			System.out.println("what the expected results are: ");
+			System.out.println("what the actual results were:" + e);
+		}
+	}
 	
 }
 
